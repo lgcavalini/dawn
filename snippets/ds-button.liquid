@@ -1,0 +1,83 @@
+{% comment %}
+  Renders a reusable design-system button for Dawn.
+
+  Accepts:
+  - label: {String} button text
+  - href: {String} optional link URL
+  - variant: {String} primary | secondary | outline
+  - size: {String} sm | md | lg
+  - type: {String} button type when rendered as <button>
+  - full_width: {Boolean} stretches button width
+  - disabled: {Boolean} disabled state
+  - name: {String} optional button name
+  - form: {String} optional form id
+  - aria_controls: {String} optional aria-controls target
+  - class: {String} optional extra classes
+
+  Usage:
+  {% render 'ds-button', label: 'Shop now', href: routes.all_products_collection_url, variant: 'outline' %}
+{% endcomment %}
+
+{%- liquid
+  assign variant = variant | default: 'primary'
+  assign size = size | default: 'md'
+  assign button_type = type | default: 'button'
+
+  capture class_name
+    echo 'button button--' | append: variant
+
+    if size == 'sm'
+      echo ' button--small'
+    elsif size == 'lg'
+      echo ' button--large'
+    endif
+
+    if full_width
+      echo ' button--full-width'
+    endif
+
+    if class != blank
+      echo ' ' | append: class
+    endif
+  endcapture
+
+  capture attributes
+    echo 'class="' | append: class_name | strip | append: '"'
+
+    if href != blank
+      echo ' href="' | append: href | append: '"'
+    else
+      echo ' type="' | append: button_type | append: '"'
+    endif
+
+    if disabled
+      if href != blank
+        echo ' role="link" aria-disabled="true"'
+      else
+        echo ' disabled'
+      endif
+    endif
+
+    if name != blank
+      echo ' name="' | append: name | append: '"'
+    endif
+
+    if form != blank
+      echo ' form="' | append: form | append: '"'
+    endif
+
+    if aria_controls != blank
+      echo ' aria-controls="' | append: aria_controls | append: '" aria-expanded="false"'
+    endif
+  endcapture
+-%}
+
+{%- if href != blank -%}
+  <a {{ attributes }}>
+    {{- label -}}
+  </a>
+{%- else -%}
+  <button {{ attributes }}>
+    {{- label -}}
+  </button>
+{%- endif -%}

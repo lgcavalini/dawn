@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Design Tokens
+   Semantically named tokens layered on top of Dawn's native theme settings.
+   Inspired by the structure and rhythm of Impact, but rebuilt for Dawn.
+   ========================================================================== */
+
+:root {
+  /* Spacing scale */
+  --ds-space-0: 0;
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-8: 2rem;
+  --ds-space-10: 2.5rem;
+  --ds-space-12: 3rem;
+  --ds-space-16: 4rem;
+  --ds-space-20: 5rem;
+  --ds-space-24: 6rem;
+  --ds-space-32: 8rem;
+
+  /* Semantic spacing */
+  --ds-space-xs: var(--ds-space-2);
+  --ds-space-sm: var(--ds-space-4);
+  --ds-space-md: var(--ds-space-6);
+  --ds-space-lg: var(--ds-space-10);
+  --ds-space-xl: var(--ds-space-16);
+  --ds-space-2xl: var(--ds-space-24);
+
+  /* Typography scale */
+  --ds-font-xs: calc(1.2rem * var(--font-body-scale));
+  --ds-font-sm: calc(1.4rem * var(--font-body-scale));
+  --ds-font-base: calc(1.6rem * var(--font-body-scale));
+  --ds-font-md: calc(1.8rem * var(--font-body-scale));
+  --ds-font-lg: calc(2rem * var(--font-heading-scale));
+  --ds-font-xl: clamp(calc(2.2rem * var(--font-heading-scale)), calc(1.4rem + 1.2vw), calc(2.8rem * var(--font-heading-scale)));
+  --ds-font-2xl: clamp(calc(2.8rem * var(--font-heading-scale)), calc(1.8rem + 2vw), calc(3.8rem * var(--font-heading-scale)));
+  --ds-font-3xl: clamp(calc(3.2rem * var(--font-heading-scale)), calc(2.2rem + 3vw), calc(4.8rem * var(--font-heading-scale)));
+  --ds-font-4xl: clamp(calc(4rem * var(--font-heading-scale)), calc(2.8rem + 4vw), calc(6.2rem * var(--font-heading-scale)));
+  --ds-font-5xl: clamp(calc(4.8rem * var(--font-heading-scale)), calc(3.6rem + 5vw), calc(8rem * var(--font-heading-scale)));
+
+  --ds-line-tight: 1.05;
+  --ds-line-snug: 1.18;
+  --ds-line-normal: 1.45;
+  --ds-line-relaxed: 1.65;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  --ds-tracking-tight: -0.03em;
+  --ds-tracking-normal: 0;
+  --ds-tracking-wide: 0.04em;
+
+  /* Radius */
+  --ds-radius-xs: 2px;
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 24px;
+  --ds-radius-pill: 999px;
+  --ds-radius-full: 9999px;
+
+  /* Shadows */
+  --ds-shadow-xs: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --ds-shadow-sm: 0 8px 24px rgba(17, 24, 39, 0.06);
+  --ds-shadow-md: 0 16px 40px rgba(17, 24, 39, 0.1);
+  --ds-shadow-lg: 0 24px 56px rgba(17, 24, 39, 0.14);
+  --ds-shadow-focus: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.55rem rgba(var(--color-foreground), 0.16);
+
+  /* Motion */
+  --ds-duration-fast: 120ms;
+  --ds-duration-base: 220ms;
+  --ds-duration-slow: 320ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Containers and layout rhythm */
+  --ds-container-narrow: 76rem;
+  --ds-container-base: var(--page-width);
+  --ds-container-wide: calc(var(--page-width) + 12rem);
+  --ds-container-gutter: 1.6rem;
+  --ds-section-space-mobile: max(var(--spacing-sections-mobile), var(--ds-space-10));
+  --ds-section-space-desktop: max(var(--spacing-sections-desktop), var(--ds-space-16));
+  --ds-grid-gap-x: max(var(--grid-mobile-horizontal-spacing), var(--ds-space-4));
+  --ds-grid-gap-y: max(var(--grid-mobile-vertical-spacing), var(--ds-space-4));
+  --ds-grid-gap-x-desktop: max(var(--grid-desktop-horizontal-spacing), var(--ds-space-6));
+  --ds-grid-gap-y-desktop: max(var(--grid-desktop-vertical-spacing), var(--ds-space-6));
+
+  /* Semantic colors */
+  --ds-color-bg: rgb(var(--color-background));
+  --ds-color-fg: rgb(var(--color-foreground));
+  --ds-color-fg-muted: rgba(var(--color-foreground), 0.72);
+  --ds-color-fg-subtle: rgba(var(--color-foreground), 0.5);
+  --ds-color-border: rgba(var(--color-foreground), 0.12);
+  --ds-color-border-strong: rgba(var(--color-foreground), 0.2);
+  --ds-color-surface: rgba(var(--color-foreground), 0.03);
+  --ds-color-surface-raised: rgba(var(--color-foreground), 0.045);
+  --ds-color-surface-hover: rgba(var(--color-foreground), 0.08);
+  --ds-color-accent: rgb(var(--color-button));
+  --ds-color-accent-fg: rgb(var(--color-button-text));
+  --ds-color-secondary: rgb(var(--color-secondary-button));
+  --ds-color-secondary-fg: rgb(var(--color-secondary-button-text));
+  --ds-color-focus: rgba(var(--color-foreground), 0.2);
+}
+
+@media screen and (min-width: 750px) {
+  :root {
+    --ds-container-gutter: clamp(2.4rem, 4vw, 3.2rem);
+    --ds-section-space-mobile: max(var(--spacing-sections-mobile), var(--ds-space-12));
+    --ds-section-space-desktop: max(var(--spacing-sections-desktop), var(--ds-space-18));
+  }
+}
+
+@media screen and (min-width: 990px) {
+  :root {
+    --ds-container-gutter: clamp(3.2rem, 4.5vw, 4.8rem);
+    --ds-section-space-desktop: max(var(--spacing-sections-desktop), var(--ds-space-20));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-duration-fast: 0ms;
+    --ds-duration-base: 0ms;
+    --ds-duration-slow: 0ms;
+  }
+}
